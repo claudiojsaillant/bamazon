@@ -21,9 +21,12 @@ CREATE TABLE departments (
 )
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Vanilla", 'Baking', 17.95, 534), ("Apple", 'Fruits', 1.25, 278)
-, ("Coca cola", 'Sodas', 2.05, 345), ("Banana", 'Fruits', 0.95, 225)
-, ("Milk", 'Diary', 2.95, 140), ("M&M", 'Candy', 1.95, 200), 
-("Greyhoose", 'Alcohol', 20.95, 373), ("Jaggermeister", 'Alcohol', 19.95, 234)
-, ("Orange", 'Fruits', 0.95, 234), ("Ginger ale", 'Sodas', 1.95, 333);
+VALUES ("Vanilla", 'Food', 17.95, 534), ("Apple", 'Food', 1.25, 278)
+, ("Coca cola", 'Drink', 2.05, 345), ("Banana", 'Food', 0.95, 225)
+, ("Milk", 'Drink', 2.95, 140), ("M&M", 'Food', 1.95, 200), 
+("Greyhoose", 'Drink', 20.95, 373), ("Jaggermeister", 'Drink', 19.95, 234)
+, ("Orange", 'Food', 0.95, 234), ("Ginger ale", 'Drink', 1.95, 333);
 
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Drinks", 5000), ("Food", 8000)

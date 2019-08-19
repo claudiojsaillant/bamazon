@@ -49,6 +49,7 @@ function renderProducts() {
             console.log('Id: ' + results[i].item_id + ', Product: ' + results[i].product_name + ", Price: " + results[i].price);
             console.log('--------------------------------------------')
         }
+
         // inquirer
         askCustomer();
     })
@@ -82,11 +83,15 @@ function askCustomer() {
                         ],
                         function (err, results) {
                             if (err) throw err;
-                            if (Math.round(unitsBuying) < results[0].stock_quantity) {
+                            if (results.length === 0) {
+                                console.log('This id does not exits')
+                                return askCustomer();
+                            }
+                            else if (Math.round(unitsBuying) < results[0].stock_quantity) {
                                 totalNoTax = (results[0].price * unitsBuying);
                                 totalTax = totalNoTax + (totalNoTax * 0.04);
                                 newSale = results[0].product_sales + totalTax;
-                                
+
 
                                 updateProduct(parseInt(results[0].stock_quantity) - unitsBuying, itemId, totalTax, newSale);
                             } else {
@@ -98,12 +103,12 @@ function askCustomer() {
                 }
                 else {
                     console.log('One or both of your inputs are not correct, make sure your id and quantity are not decimals or words.');
-                    askCustomer();
+                    start();
                 }
             }
             else {
                 console.log("Make sure your input it's a number (ID)");
-                askCustomer();
+                start();
             }
 
         })

@@ -42,6 +42,7 @@ function menu() {
                     addProduct()
                     break;
                 case 'Exit':
+                    console.log('Thanks for working with bamazon!')
                     connection.end();
             }
         })
