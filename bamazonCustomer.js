@@ -74,7 +74,7 @@ function askCustomer() {
 
                 if (!isNaN(itemId) && !isNaN(unitsBuying)) {
                     //array to get ?
-                    connection.query("SELECT item_id, product_name, stock_quantity, price FROM products WHERE ?",
+                    connection.query("SELECT item_id, product_name, stock_quantity, price, product_sales FROM products WHERE ?",
                         [
                             {
                                 item_id: itemId
@@ -85,7 +85,10 @@ function askCustomer() {
                             if (Math.round(unitsBuying) < results[0].stock_quantity) {
                                 totalNoTax = (results[0].price * unitsBuying);
                                 totalTax = totalNoTax + (totalNoTax * 0.04);
-                                updateProduct(parseInt(results[0].stock_quantity) - unitsBuying, itemId, totalTax);
+                                newSale = results[0].product_sales + totalTax;
+                                
+
+                                updateProduct(parseInt(results[0].stock_quantity) - unitsBuying, itemId, totalTax, newSale);
                             } else {
                                 console.log('Item stock its not sufficient. Stock of this item is: ' + results[0].stock_quantity);
                                 askCustomer();
@@ -102,16 +105,18 @@ function askCustomer() {
                 console.log("Make sure your input it's a number (ID)");
                 askCustomer();
             }
-            
+
         })
 }
 
-function updateProduct(quantity, id, total) {
+function updateProduct(quantity, id, total, newSale) {
+
     var query = connection.query(
         "UPDATE products SET ? WHERE ?",
         [
             {
-                stock_quantity: quantity
+                stock_quantity: quantity,
+                product_sales: newSale
             },
             {
                 item_id: id
