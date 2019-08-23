@@ -5,8 +5,8 @@
 
 A new way to shop online with a CLI.
 
-![Screenshot](./pics/pic1)
-![Screenshot](./pics/pic2)
+![Screenshot](https://github.com/claudiojsaillant/bamazon/blob/master/pics/pic1.png)
+![Screenshot](https://github.com/claudiojsaillant/bamazon/blob/master/pics/pic2.png)
 
 ## App Composition
 
