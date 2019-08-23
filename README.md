@@ -5,8 +5,8 @@
 
 A new way to shop online with a CLI.
 
-![Screenshot](pics/pic1)
-![Screenshot](pics/pic2)
+![Screenshot](./pics/pic1)
+![Screenshot](./pics/pic2)
 
 ## App Composition
 
