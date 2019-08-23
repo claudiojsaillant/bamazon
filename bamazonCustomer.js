@@ -84,15 +84,13 @@ function askCustomer() {
                         function (err, results) {
                             if (err) throw err;
                             if (results.length === 0) {
-                                console.log('This id does not exits')
+                                console.log('This id does not exits');
                                 return askCustomer();
                             }
                             else if (Math.round(unitsBuying) < results[0].stock_quantity) {
                                 totalNoTax = (results[0].price * unitsBuying);
                                 totalTax = totalNoTax + (totalNoTax * 0.04);
                                 newSale = results[0].product_sales + totalTax;
-
-
                                 updateProduct(parseInt(results[0].stock_quantity) - unitsBuying, itemId, totalTax, newSale);
                             } else {
                                 console.log('Item stock its not sufficient. Stock of this item is: ' + results[0].stock_quantity);

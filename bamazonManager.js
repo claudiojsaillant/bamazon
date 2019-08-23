@@ -57,7 +57,6 @@ function renderProducts(action) {
             console.log('-----------------------------------------------------------');
         }
         if (action === 'update') {
-            console.log('hello');
             updateProduct();
         } else if (action === 'render') {
             menu();
